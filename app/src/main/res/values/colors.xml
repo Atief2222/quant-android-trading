@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg_void_dark">#0b0e14</color>
+    <color name="surface_slate_900">#0f172a</color>
+    <color name="surface_slate_800">#1e293b</color>
+    <color name="border_slate_700">#334155</color>
+    <color name="brand_sky_blue">#38bdf8</color>
+    <color name="signal_buy_green">#10b981</color>
+    <color name="signal_sell_red">#ef4444</color>
+    <color name="macro_amber_gold">#f59e0b</color>
+    <color name="text_primary">#f8fafc</color>
+    <color name="text_secondary">#94a3b8</color>
+</resources>
