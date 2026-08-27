@@ -68,7 +68,6 @@ class SpeedometerView @JvmOverloads constructor(
 
         // 1. Gambar Busur Warna
         if (gaugeType == 0) {
-            // Choppiness: Hijau (Trend), Kuning (Moderate), Merah (Chop)
             arcPaint.color = Color.parseColor("#10b981")
             canvas.drawArc(arcRect, 180f, 72f, false, arcPaint)
 
@@ -78,7 +77,6 @@ class SpeedometerView @JvmOverloads constructor(
             arcPaint.color = Color.parseColor("#ef4444")
             canvas.drawArc(arcRect, 290f, 70f, false, arcPaint)
         } else {
-            // MPI: Hijau (Gold Bullish), Kuning (Neutral), Merah (Gold Bearish)
             arcPaint.color = Color.parseColor("#10b981")
             canvas.drawArc(arcRect, 180f, 60f, false, arcPaint)
 
@@ -100,8 +98,8 @@ class SpeedometerView @JvmOverloads constructor(
 
         val angleRad = Math.toRadians(angleDeg.toDouble())
         val needleLength = radius * 0.75f
-        val endX = (cx + needleLength * cos(angleRad)).toFloat()
-        val endY = (cy + needleLength * sin(angleRad)).toFloat()
+        val endX = cx + (needleLength * cos(angleRad).toFloat())
+        val endY = cy + (needleLength * sin(angleRad).toFloat())
 
         // 3. Gambar Jarum & Titik Poros
         canvas.drawLine(cx, cy, endX, endY, needlePaint)
