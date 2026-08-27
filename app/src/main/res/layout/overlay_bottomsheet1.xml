@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#ee0c1322"
+    android:padding="12dp">
+
+    <!-- Header Chat Sheet -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingBottom="6dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="QUANT AI MENTOR PRO"
+            android:textColor="@color/brand_sky_blue"
+            android:textStyle="bold"
+            android:textSize="13sp" />
+
+        <Button
+            android:id="@+id/btn_reset_chat"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:text="Reset"
+            android:textSize="10sp"
+            android:backgroundTint="@color/surface_slate_800"
+            android:textColor="@color/text_secondary" />
+
+        <Button
+            android:id="@+id/btn_close_sheet"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:text="Tutup"
+            android:textSize="10sp"
+            android:backgroundTint="@color/surface_slate_800"
+            android:textColor="@color/signal_sell_red"
+            android:layout_marginStart="4dp" />
+    </LinearLayout>
+
+    <!-- Quick Action Chips -->
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:paddingBottom="6dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/chip_trend"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="📈 Tren &amp; Konfluensi"
+                android:textSize="9sp"
+                android:backgroundTint="@color/surface_slate_900"
+                android:textColor="@color/brand_sky_blue" />
+
+            <Button
+                android:id="@+id/chip_snr"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="🎯 Validasi SNR"
+                android:textSize="9sp"
+                android:backgroundTint="@color/surface_slate_900"
+                android:textColor="@color/brand_sky_blue"
+                android:layout_marginStart="4dp" />
+
+            <Button
+                android:id="@+id/chip_macro"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="🌐 CVD &amp; Makro"
+                android:textSize="9sp"
+                android:backgroundTint="@color/surface_slate_900"
+                android:textColor="@color/brand_sky_blue"
+                android:layout_marginStart="4dp" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- Scroll Message Area -->
+    <ScrollView
+        android:id="@+id/scroll_chat"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:id="@+id/chat_message_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+    <!-- Input Bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingTop="6dp">
+
+        <EditText
+            android:id="@+id/et_chat_input"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@color/surface_slate_800"
+            android:hint="Tanyakan analisa setup..."
+            android:textColor="@color/text_primary"
+            android:textColorHint="@color/text_secondary"
+            android:paddingHorizontal="10dp"
+            android:textSize="12sp"
+            android:inputType="text" />
+
+        <Button
+            android:id="@+id/btn_chat_send"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="Kirim"
+            android:textSize="11sp"
+            android:backgroundTint="@color/brand_sky_blue"
+            android:textColor="@color/bg_void_dark"
+            android:textStyle="bold"
+            android:layout_marginStart="6dp" />
+    </LinearLayout>
+</LinearLayout>
