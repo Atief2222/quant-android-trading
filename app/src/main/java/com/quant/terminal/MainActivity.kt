@@ -10,11 +10,11 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SwitchCompat
 import androidx.lifecycle.lifecycleScope
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.gson.Gson
 import com.quant.terminal.api.ApiClient
 import com.quant.terminal.api.AiScanResponse
 import com.quant.terminal.api.MarketPulseResponse
-import com.quant.terminal.databinding.ActivityMainBinding
 import com.quant.terminal.ui.ChartBridge
 import com.quant.terminal.ui.SpeedometerView
 import com.quant.terminal.utils.PreferenceManager
@@ -23,23 +23,24 @@ import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
     private lateinit var prefs: PreferenceManager
+    private lateinit var fragmentContainer: FrameLayout
+    private lateinit var bottomNav: BottomNavigationView
     private val gson = Gson()
 
     private var activeTabId = R.id.nav_terminal
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_main)
 
         prefs = PreferenceManager(this)
+        fragmentContainer = findViewById(R.id.fragment_container)
+        bottomNav = findViewById(R.id.bottom_nav)
 
         setupNavigation()
         switchTab(R.id.nav_terminal)
 
-        // Sinkronisasi Endpoint Gist dan Polling Data Pasar
         lifecycleScope.launch {
             ApiClient.syncActiveUrl()
             startMarketDataPolling()
@@ -47,7 +48,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupNavigation() {
-        binding.bottomNav.setOnItemSelectedListener { item ->
+        bottomNav.setOnItemSelectedListener { item ->
             switchTab(item.itemId)
             true
         }
@@ -55,31 +56,31 @@ class MainActivity : AppCompatActivity() {
 
     private fun switchTab(itemId: Int) {
         activeTabId = itemId
-        binding.fragmentContainer.removeAllViews()
+        fragmentContainer.removeAllViews()
 
         when (itemId) {
             R.id.nav_terminal -> {
-                val view = layoutInflater.inflate(R.layout.fragment_terminal, binding.fragmentContainer, false)
-                binding.fragmentContainer.addView(view)
+                val view = layoutInflater.inflate(R.layout.fragment_terminal, fragmentContainer, false)
+                fragmentContainer.addView(view)
                 val webView = view.findViewById<android.webkit.WebView>(R.id.webview_chart)
                 ChartBridge.initChart(webView)
             }
             R.id.nav_radar -> {
-                val view = layoutInflater.inflate(R.layout.fragment_radar, binding.fragmentContainer, false)
-                binding.fragmentContainer.addView(view)
+                val view = layoutInflater.inflate(R.layout.fragment_radar, fragmentContainer, false)
+                fragmentContainer.addView(view)
                 view.findViewById<SpeedometerView>(R.id.gauge_choppiness).setGaugeMode(0, "CHOPPINESS")
                 view.findViewById<SpeedometerView>(R.id.gauge_mpi).setGaugeMode(1, "MACRO MPI")
             }
             R.id.nav_control -> {
-                val view = layoutInflater.inflate(R.layout.fragment_control, binding.fragmentContainer, false)
-                binding.fragmentContainer.addView(view)
+                val view = layoutInflater.inflate(R.layout.fragment_control, fragmentContainer, false)
+                fragmentContainer.addView(view)
                 view.findViewById<Button>(R.id.btn_trigger_scan).setOnClickListener {
                     triggerAiScan()
                 }
             }
             R.id.nav_settings -> {
-                val view = layoutInflater.inflate(R.layout.fragment_settings, binding.fragmentContainer, false)
-                binding.fragmentContainer.addView(view)
+                val view = layoutInflater.inflate(R.layout.fragment_settings, fragmentContainer, false)
+                fragmentContainer.addView(view)
                 setupSettingsView(view)
             }
         }
