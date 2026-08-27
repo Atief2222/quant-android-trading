@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_void_dark"
+    android:padding="12dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PENGATURAN & FLOATING OVERLAY"
+        android:textColor="@color/brand_sky_blue"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <!-- Switch Floating Overlay -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@color/surface_slate_900"
+        android:padding="12dp"
+        android:layout_marginTop="12dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Aktifkan Floating Overlay (MT5 Helper)"
+            android:textColor="@color/text_primary"
+            android:textSize="12sp" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switch_floating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <!-- Base URL Status -->
+    <TextView
+        android:id="@+id/tv_active_server_url"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Server URL: Sedang sinkronisasi..."
+        android:textColor="@color/text_secondary"
+        android:textSize="11sp"
+        android:layout_marginTop="12dp" />
+
+    <!-- Button Sync URL Manual -->
+    <Button
+        android:id="@+id/btn_sync_url"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:text="🔄 SINKRONISASI SERVER URL (GIST)"
+        android:backgroundTint="@color/surface_slate_800"
+        android:textColor="@color/brand_sky_blue"
+        android:textSize="11sp"
+        android:layout_marginTop="6dp" />
+</LinearLayout>
