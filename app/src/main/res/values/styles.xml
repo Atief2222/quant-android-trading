@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.QuantTerminal" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:statusBarColor">@color/bg_void_dark</item>
+        <item name="android:navigationBarColor">@color/bg_void_dark</item>
+        <item name="android:windowBackground">@color/bg_void_dark</item>
+        <item name="colorPrimary">@color/brand_sky_blue</item>
+        <item name="colorSecondary">@color/macro_amber_gold</item>
+    </style>
+</resources>
